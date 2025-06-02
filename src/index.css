@@ -1,0 +1,123 @@
+@tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    @layer base {
+      :root {
+        --background: 0 0% 100%; /* White */
+        --foreground: 224 71.4% 4.1%; /* Near black */
+
+        --card: 0 0% 100%;
+        --card-foreground: 224 71.4% 4.1%;
+
+        --popover: 0 0% 100%;
+        --popover-foreground: 224 71.4% 4.1%;
+
+        /* Primary color from DemandSage example (Teal) */
+        --primary: 175 44% 54%; /* #53C1BE */
+        --primary-foreground: 0 0% 100%; /* White text on teal */
+
+        /* Secondary color from DemandSage example footer (Dark Blue/Charcoal) */
+        --secondary: 236 39% 22%; /* #22264C */
+        --secondary-foreground: 0 0% 98%; /* White/Off-white text for dark BG */
+
+        --muted: 220 14.3% 95.9%; /* Light gray */
+        --muted-foreground: 220 8.9% 46.1%; /* Medium gray text */
+
+        --accent: 220 14.3% 95.9%; /* Light gray, same as muted for this theme */
+        --accent-foreground: 224 71.4% 4.1%;
+
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+
+        --border: 220 13% 91%; /* Light gray border */
+        --input: 220 13% 91%;
+        --ring: 175 44% 54%; /* Teal for focus rings */
+
+        --radius: 0.375rem; /* Slightly less rounded like DemandSage */
+
+        /* Font family - Prioritize Poppins */
+        --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      }
+
+      /* Dark mode is not a primary focus for this specific styling but kept for completeness */
+      .dark {
+        --background: 224 71.4% 4.1%;
+        --foreground: 0 0% 98%;
+
+        --card: 224 71.4% 4.1%;
+        --card-foreground: 0 0% 98%;
+
+        --popover: 224 71.4% 4.1%;
+        --popover-foreground: 0 0% 98%;
+
+        --primary: 175 40% 58%; /* Adjusted Teal for dark */
+        --primary-foreground: 0 0% 100%;
+
+        --secondary: 236 30% 25%; /* Slightly lighter dark blue */
+        --secondary-foreground: 0 0% 98%;
+
+        --muted: 220 13% 15%;
+        --muted-foreground: 220 8.9% 55%;
+
+        --accent: 220 13% 15%;
+        --accent-foreground: 0 0% 98%;
+
+        --destructive: 0 70% 50%;
+        --destructive-foreground: 0 0% 98%;
+
+        --border: 220 13% 20%;
+        --input: 220 13% 20%;
+        --ring: 175 40% 58%;
+      }
+    }
+
+    @layer base {
+      * {
+        @apply border-border;
+      }
+      body {
+        @apply bg-background text-foreground font-sans;
+        font-feature-settings: "rlig" 1, "calt" 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        @apply font-semibold;
+      }
+    }
+
+    /* Specific styling for chart container to mimic DemandSage for export */
+    .chart-export-wrapper {
+      width: 1536px;
+      height: 804px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      font-family: var(--font-sans); /* Use the main font stack */
+      position: absolute; /* To hide off-screen */
+      left: -9999px;
+      top: -9999px;
+    }
+
+    .chart-export-main-area {
+      flex-grow: 1;
+      padding: 40px 40px 20px 40px; /* Consistent padding, less bottom for footer */
+      display: flex; /* Allow chart canvas to fill space */
+      flex-direction: column;
+    }
+    
+    .chart-export-canvas-container {
+        flex-grow: 1; /* Make canvas container fill available space */
+        position: relative; /* For Chart.js canvas positioning */
+    }
+    
+    .chart-container-bg { /* Preview styles, can differ from export */
+      background: hsl(var(--background));
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      padding: 1rem; 
+    }
+
+    /* Add Poppins font from Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
